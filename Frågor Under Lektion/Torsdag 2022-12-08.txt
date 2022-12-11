@@ -1,0 +1,10 @@
+Så inom MvvM vill man gärna ha Db framför som visar vart databaserna finns? -- Ja, annars kan man missförstå vad som är vad när man gör MvvM
+
+Måste man ha Primary keys i allt för att starta Entity Framework? -- Ja, Entity Framework kommer att kolla på foreign keys så de har rätt referencer annars
+om den ser att den inte har en primär nyckel så kommer den att sparka ut den då det är fel design, ej i normalisering
+
+Måste man även ha SaveChanges i WPF/MvvM också? -- När man ska spara till databasen, då måste man alltid använda SaveChanges(); Spelar ingen roll
+om det är en annan applikation.
+
+Så med Code First så behöver vi inte göra en connection med connection string, utan vi gör detta i DbContext Klassen direkt? -- Exakt,
+vi gör en migrationen istället för en Scaffold. Scaffold är en beskrivning hur den ska generera. Migrationen är det motsatta.

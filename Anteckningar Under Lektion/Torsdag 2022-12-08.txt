@@ -1,0 +1,87 @@
+//Code First
+På Code First skapar vi våra klasser och properties direkt, Entity Framework kommer att veta vad som är vår Primary Key när vi sätter namnet Id på det.
+Då vet programmet att detta skall vara en primary key.
+Annars om vi vill sätta något annat till en primary key, då kan vi lägga attributen [Key] över för att säga detta skall vara primary key.
+Och om vi vill säga att den ska vara en NVARCHAR med en constraint, då kan vi lägga även attributen [StringLength(13, MinimumLength = 13)].
+MinimumLength vill säga minst 13 tecken skall finnas.
+
+Det är väldigt viktigt att välja rätt datatyp till skapande av properties till klasserna.
+
+Om vi vill använda operationer som Add och Remove, så kan vi använda oss av interfacet ICollection när vi skapar property, då kan vi använda oss av
+LINQ-Operationer. Detta kan även göra en junction table till oss, alltså En-Till-Många Relation. Bara när vi gör att en bok kan ha flera författare då
+kommer den att skapa en junction table. Men i C# blir detta ICollection.
+
+//Code First skapande av Context
+Det är viktigt att skapande av klassen ska vara databasens namn samt "context" i slutet. Det är viktigt att denna klass även ärver från klassen
+DbContext. Alltså Exempelvis, "public class BookstoreContext : DbContext".
+
+I denna klassen använder vi oss inte av våra vanliga typder utan nu ska vi använda en ny speciell datatyp. (DbSet).
+
+Här skapar vi våra properties från innan i våra andra tabeller. men dessa kommer att skapas på detta sättet. "public DbSet<Book> Books {get; set;}"
+"public DbSet<Author> Authors {get; set;}".
+
+Notera att namnen är i plural.
+
+Nu ska vi skapa våran builder, det som säger att vi ska använda rätt server. Vi vill override en protected void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+{
+	base.OnConfiguring(optionsBuilder);
+	optionsBuilder.UseSqlServer("Connection String");
+}.
+När vi ska hämta Connection stringen, så hämtar vi fåran våran server, inte databasen denna gång. Utan själva servern, det är då viktigt att komma ihåg
+att nu kommer vi inte få med "Database=" eller "Initial Catalog="
+
+//Migration
+
+Nu i Package Manager Console, ska vi skriva
+"add-migration init".
+
+init står för att nu skapar vi får alldeles första migration. När detta görs så kommer vi få en mapp som heter Migrations.
+Detta kommer att skapa några filer.
+
+en fil kommer att skapas med en tidsstämpling.
+Det finns ett par metoder i den och vi vill kolla på "Down".
+Om vi vill ta bort migrationen, så är detta våran "DropTable" så att säga.
+"Up" är den metoden som gör tables till databasen.
+Här kan vi även ändra om vi vill ha NCHAR istället för NVARCHAR i skapandet av tabellerna som finns i migrationen. Detta kan vi då göra för att vi inte
+har genererat databasen än.
+
+init är det som bestämmer alla förändringar mot databasen.
+
+För att generera databasen, då skriver i package manager consolen, "update-database" men vi lägger till "update-database -verbose" för att se
+vad som händer. verbose är en flagga som säger att man vill ha all information som händer när man kör detta programmet. annars räcker det med "update-database".
+
+För informationens skull, när man genererar all data, så genereras även en tabell för migrationen. Den tidsstämplande migrationen, eller snarare
+alla migrationer vi har gjort.
+
+Nu för att lägga till data så är detta så simpelt som vanlig C# kod. alltså ex
+
+//using CodeFirstLiveDemo.DataAccess;
+//using CodeFirstLiveDemo.DataAccess.Models;
+
+//var bookstoreContext = new BookstoreContext();
+
+//var astrid = new Author()
+//{
+	//FirstName = "Astrid",
+	//LastName = "Lindgren"
+//};
+//var ronja = new Book()
+//{
+	//Isbn = "9789129691771",
+	//Title = "Ronja Rövardotter",
+	//Author = astrid
+//};
+
+//bookstoreContext.Books.Add(ronja);
+//bookstoreContext.SaveChanges();
+
+Notera att semicolonen i new Author och new Book är efter måsvingen, inte inuti objektet.
+
+Om du vill skapa en många till många relation då får du göra en migration.
+Men innan migrationen kom ihåg att kolla datatypen så den är en ICollection<>.
+
+Då får du skriva "add-migration "Med ett namn, ex... addedManyToMany"
+
+Migrationen själv kommer skapa junction tablet,
+sedan får man göra en "update-database" igen.
+

@@ -1,0 +1,36 @@
+Uppdateras även SSMS Live med Entity Framework? -- Ja
+
+Connection String = use (Database)? -- Ja, ungefärligt. Det säger till oss att använda den adressen, ex som en webbadress.
+
+Vad är virtual? -- Det innebär att vi kan skriva över den, att vi kan overrida den. Alltså vi kan förändra beteendet.
+
+Vad är partial? -- Att kunna utöka, Dela upp.
+
+Vad är ICollection<City>? -- Ett land kan ha flera städer, Den implementerar IEnumerable. Förmågan att kunna lägga till och ta bort städer.
+
+Vad är DbContextOptions? --
+
+Vad är DbSet? -- DbSet är en typ av lista för att kunna lägga till och ta bort saker/objekt för att kunna ta bort info/data från databasen.
+Detta behövs för att ändra data i Databasen.
+
+Junction i Entity? -- ICollection är våra junction tables. Vi använder ICollection för att hantera junctions i ssms.
+
+keysDemoDbContext.SaveChanges() -- Slutet av all kod för att spara allting och uppdatera Databasen.
+
+Namngivning i LINQ? -- Linq, namngivning spelar inte så stor roll, man brukar bara lägga första bokstaven av typen.
+
+Alla nya metoder i EF kommer de med i nuget packagen? -- Ja.
+
+Är poängen med EF då att man vill bara skapa en tom databas i SQL och Skapa alla tabeller i EF. -- Ja
+
+Genereras Denna kod automatiskt även under tiden man jobbar med skapande av tabellen? -- Ja
+
+När man extractar en metod med resharper med EF, så kan den även generera 2 nya rader med DbSet varför? -- DbSet kan i vissa tillfällen vara en instans
+av en klass, ex var nyklass = new NyKlass();
+
+Vad menar du med lista? -- Man ska kunna se för varje butik hur mycket lagersaldo det finns.
+
+
+
+
+
