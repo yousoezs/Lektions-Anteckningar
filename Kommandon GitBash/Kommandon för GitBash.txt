@@ -14,4 +14,5 @@ git commit -- detta committar precis som i visual studio gör
 
 git merge -- detta mergar 2 branches. Alltså om du är inne i development och vill merga med master. så blir det git merge master
 
+git status -- kollar på status i git branchen
 

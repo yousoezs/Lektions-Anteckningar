@@ -1,0 +1,9 @@
+//Anteckningar
+I Skapande av properties i code first på entity framework, då brukar man inte skapa fält för sina properties. Anledningen till detta är att vi bara vill
+se data och lägga till och ta bort data. Vi vill inte påverka våra (get och sets). Då behöver vi inte skapa full properties. Stunden vi vill ändra på
+vad våra get och set ska göra då vill vi ha tillgång till fält och då skall vi skapa dessa.
+
+Det är förbjudet att namnge klasser i plural. Man skriver alltid i singular, detta är för läsbarhet då om vi ska skapa en klass som innehåller krafter,
+då skall den heta "Power". Anledningen till det är för att den hanterar 1 kraft inte alla krafter, men naturligtvis så kan denna klassen användas
+för flera krafter
+
