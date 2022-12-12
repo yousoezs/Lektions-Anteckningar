@@ -15,7 +15,7 @@ kommer den att skapa en junction table. Men i C# blir detta ICollection.
 Det är viktigt att skapande av klassen ska vara databasens namn samt "context" i slutet. Det är viktigt att denna klass även ärver från klassen
 DbContext. Alltså Exempelvis, "public class BookstoreContext : DbContext".
 
-I denna klassen använder vi oss inte av våra vanliga typder utan nu ska vi använda en ny speciell datatyp. (DbSet).
+I denna klassen använder vi oss inte av våra vanliga typer utan nu ska vi använda en ny speciell datatyp. (DbSet).
 
 Här skapar vi våra properties från innan i våra andra tabeller. men dessa kommer att skapas på detta sättet. "public DbSet<Book> Books {get; set;}"
 "public DbSet<Author> Authors {get; set;}".
@@ -27,7 +27,7 @@ Nu ska vi skapa våran builder, det som säger att vi ska använda rätt server.
 	base.OnConfiguring(optionsBuilder);
 	optionsBuilder.UseSqlServer("Connection String");
 }.
-När vi ska hämta Connection stringen, så hämtar vi fåran våran server, inte databasen denna gång. Utan själva servern, det är då viktigt att komma ihåg
+När vi ska hämta Connection stringen, så hämtar vi från våran server, inte databasen denna gång. Utan själva servern, det är då viktigt att komma ihåg
 att nu kommer vi inte få med "Database=" eller "Initial Catalog="
 
 //Migration

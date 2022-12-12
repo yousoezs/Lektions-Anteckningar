@@ -1,0 +1,9 @@
+Varför använder man inte fält i fallen på code first? -- Alla properties har ett fält i bakgrunden som vi inte ser. Om vi vill påverka get eller set
+då vill vi ha en full property. Om vi bara ska hålla data så behöver vi inte full property.
+
+Varför har vi måsvingar efter var stålmannen = new Hero()  
+{
+	FirstName = "Clark",
+	LastName = "Kent"
+	...
+}; -- För att scopa och instansiera vår variabel stålmannen direkt med värden så att vi slipper skriva stålmannen.FirstName="".
