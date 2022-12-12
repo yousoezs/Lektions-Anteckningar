@@ -20,8 +20,9 @@ Om vi vill göra en MÅNGA till MÅNGA relation då skapar vi en ICollection
 
 public ICollection<Hero> Heroes {get; set;} = new List<Hero>();
 
-Om vi använder oss av using(var context = new HeroContext())
+Om vi använder oss av 
+using(var context = new HeroContext())
 { -- Här öppnas anslutningen till HeroContext säkert!
 
-} -- Här stänger vi anslutningen säkert!! Vi disposar det!
+}; -- Här stänger vi anslutningen säkert!! Vi disposar det!
 
