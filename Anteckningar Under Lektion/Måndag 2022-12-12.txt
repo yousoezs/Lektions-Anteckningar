@@ -10,3 +10,18 @@ ICollection<Power> Powers blir null då det inte finns någon lista. Vi behöver
 List<>();
 
 HashSet är en lista också iställer för list, MEN vi kan bara ha unika värden i HashSet. Alltså vi kan inte ha dubbla identiska värden inuti där.
+HashSet kör även en true och false som kollar om variabel finns redan inne.
+
+Om vi ska göra EN till MÅNGA relation då vill vi skapa en property som nedan exempel...
+
+Public Hero Heroes {get; set;} = new listHero<>();
+
+Om vi vill göra en MÅNGA till MÅNGA relation då skapar vi en ICollection
+
+public ICollection<Hero> Heroes {get; set;} = new List<Hero>();
+
+Om vi använder oss av using(var context = new HeroContext())
+{ -- Här öppnas anslutningen till HeroContext säkert!
+
+} -- Här stänger vi anslutningen säkert!! Vi disposar det!
+
