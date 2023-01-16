@@ -16,5 +16,34 @@ Om man ska koppla mot en cloud med mongoDb, så vill vi skriva ex "var settings 
 Eller så kopierar du texten Atlas genererar. 
 
 För Dependecy Injection, så vill du installera två nuget paket till dependencies och den första heter Microsoft.Extensions.DependencyInjection.
-Den andra heter Mincrosoft.Extensions.Hosting
+Den andra heter Mincrosoft.Extensions.Hosting.
 
+När vi jobbar med Dependency Injection så kommer vi att börja jobba med App.xaml.cs som vi gjorde i MvvM och ta bort StartUpUri från App.xaml.
+
+För att få upp mainwindow så säger vi i App konstruktorn services.AddScoped<MainWindow>(); För att starta upp MainWindow.
+Hur detta fungerar är för att services i det här fallet som ligger i AppHost = Host.CreateDefaultBuilder().ConfigureServices((hostContext, services) =>
+{
+	services.AddScoped<IRepository<Person>, PeopleManager>();
+	services.AddScoped<MainWindow>();
+}).Build();
+
+är det som innehåller "new". Sedan för att starta upp fönstret måste vi override igen OnStartUp.
+
+protected override async void OnStartup(StartUpEventArgs e)
+{
+	await AppHost.StartAsync();
+
+	var mainWindow = AppHost!.Services.GetRequiredService<MainWindow>();
+	mainWindow.Show();
+	base.OnStartup(e);
+}
+
+protected override async void OnExit(ExitEventArgs e)
+{
+	await AppHost.StopAsync():
+	base.OnExit(e);
+}
+Notera att vi returnerar en void på en async metod, detta är eftersom vi inte kan göra mycket åt det. Det är sällan man får göra så men i sådana tillfällen
+är det okej.
+
+OnExit måste vi ha för att se till att Apphost inte ligger och kör medan programmet är avstängt.
