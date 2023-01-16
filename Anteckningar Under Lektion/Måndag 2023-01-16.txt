@@ -1,0 +1,13 @@
+Skapa en class library för att skapa en DataAccess som gör våran koppling till MongoDb. Anledningen till en DataAccess som class library är för att kunna
+ge kopplingen till flera applikationer. I vår DataAccess så använder vi oss av Nuget Paketet MongoDb.Driver, men BARA i DataAccesen.
+
+När vi skapar en interface som ex kallas IRepository<T> och skapar metoder där inne, när man tillsätter parametrar i dessa metoder så vill man använda
+object för att object kan ta in vad som helst. De metoderna kan vi sedan göra CRUD operationer av i en klass och använda oss av det i andra applikationer.
+
+När vi använder oss av interfacet i en klass som sitter i DataAccess, den klassen hanterar all våran kommunikation till MongoDb.
+
+Om vi ska skapa collections/tabeller, så vill man skapa en ny klass för varje collection och ex säga i början av koden 
+"private readonly IMongoCollection<Person> _collection;"
+
+När vi använder oss av IRepository<T>, så kan vi även använda det för att byta databas från MongoDb till SQL utan att påverka koden. Vi kan även skapa
+en till interface som ska skapa en samling av objekt med namnet ex IAggregate<T>

@@ -1,0 +1,17 @@
+Varför vill man göra en class library istället för en klass när man skapar en DataAccess? - Så man kan ge access till flera applikationer/projekt. Har man
+en klass kan man inte göra detta.
+
+När man har en DataAccess och ska använda kopplingen, räcker det med en using för att få kopplingen mot DataAccesen? - Nej, man måste instansiera
+klassen som håller kopplingen!
+
+Om man har referensen från DataAccess till sin applikation, då har man inte metoderna från MongoDb.Driver? - Nej, men det är därför vi har våran Interface
+IRepository<T>, och PeopleManager.
+
+Så vi vill skapa en ny klass för varje ny collection vi gör? - Ja!
+
+Finns det något som säger hur länge kopplingen ska leva? - Ja! 
+
+I Repository<T> kan man även göra metoderna Async? - Ja, men då får man skriva Task istället för void, då förväntar man sig att göra det till async senare.
+
+Kan man implementera hur många interfaces man vill? - Ja, man kan göra det!
+
