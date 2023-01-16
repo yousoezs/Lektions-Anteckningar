@@ -11,3 +11,10 @@ Om vi ska skapa collections/tabeller, så vill man skapa en ny klass för varje 
 
 När vi använder oss av IRepository<T>, så kan vi även använda det för att byta databas från MongoDb till SQL utan att påverka koden. Vi kan även skapa
 en till interface som ska skapa en samling av objekt med namnet ex IAggregate<T>
+
+Om man ska koppla mot en cloud med mongoDb, så vill vi skriva ex "var settings = MongoClientSettings.FromConnectionString("Här Ligger connectionString")";
+Eller så kopierar du texten Atlas genererar. 
+
+För Dependecy Injection, så vill du installera två nuget paket till dependencies och den första heter Microsoft.Extensions.DependencyInjection.
+Den andra heter Mincrosoft.Extensions.Hosting
+

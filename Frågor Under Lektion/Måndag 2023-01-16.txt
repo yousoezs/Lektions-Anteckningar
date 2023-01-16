@@ -15,3 +15,8 @@ I Repository<T> kan man även göra metoderna Async? - Ja, men då får man skri
 
 Kan man implementera hur många interfaces man vill? - Ja, man kan göra det!
 
+new FindOneAndUpdateOptions<Person, Person>, vad betyder de båda persons? - De kollar om den ska uppdatera Person och isåfall vad den ska hantera
+och skicka in.
+
+Så AddScoped behöver en parameter för att fungera korrekt? - Ja, vi löskopplar med AddScoped så att vi slipper skriva new. Så istället att en klass är
+beroende av en annan, så blir de helt enkelt inte beroende av varandra längre.
