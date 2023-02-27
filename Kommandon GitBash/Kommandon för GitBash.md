@@ -35,3 +35,27 @@
 > git status
 
 - kollar på status i git branchen
+
+> git fetch
+
+- Hämtar senaste versionen av ett repo
+
+> git rebase
+
+- Applicerar senaste versionen till ditt projekt av samma repo
+
+> git rebase --autostash
+
+- Hämtar en modifierad version av ditt projekt och håller koden du har skrivit intakt
+
+> git add .
+
+- Lägger till alla ändringar du gjort till projektet
+
+> git commit -m ""
+
+-gör en commit och sparar alla ändringar du gjort med ett meddelande inom citattecken.
+
+> git push
+
+- skickar upp alla ändringar till github och sparar det där.
